@@ -2,10 +2,8 @@
 
 import re
 
-'''beg_g = '<font color="#008000">'
-beg_r = '<font color="#E80000">'
-end = '</font>'''
-
+global l1
+global l2
 
 # возвращает общую последовательность подряд идущих символов - для случаев, когда слова разные
 def common_s(s1, s2):
@@ -85,10 +83,11 @@ def compare(l1, l2):
             e = beg_g + e + end
             new1 += e
             #print 'done'
-            print new1
+            #print new1
         else:
             e = beg_r + e + end
             new1 += e
+
 
     for m in l2:
         if m in same:
@@ -96,25 +95,27 @@ def compare(l1, l2):
             m = beg_g + m + end
             new2 += m
             #print 'done'
-            print new2
+            #print new2
         else:
             m = beg_g + m + end
             new2 += m
 
+    l1 = new1
+    l2 = new2
+
     print 'same:', same
     print 'diff1: \n', diff1
+    print l1
+    print l2
+
     return match
-    print new1
-    print new2
 
 
+s1 = u'выстрелил а не целясь цветком, и смеясь '
+s2 = u'Выстрелил, не целясь, цветком и, смеясь,'
 
 
-l1 = u'выстрелил а не целясь цветком, и смеясь '
-l2 = u'Выстрелил, не целясь, цветком и, смеясь,'
-
-
-print compare(l1, l2)
+print compare(s1, s2)
 #print common_s(u'не', u'не')
 
 #'<font color="#008000">' + i1 + '</font>'+'<br>\n'
